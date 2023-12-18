@@ -1,70 +1,65 @@
-// // let searchBar = document.getElementById('search'); 
-// // // let apikey = "765f57a" //
+// random meal function            
+async function getRandomMeal() {
+    try {
+        let response = await fetch(`https://www.themealdb.com/api/json/v1/1/random.php`);
+        let data = await response.json();
+        
+        displaymeal(data.meals[0]);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// displaying the random meal in html
+function displaymeal(meals){
+    let middlContent = document.getElementById('middlContent')
+
+    let randomDish = `<img class="randomMeal" src="${meals.strMealThumb}">
+    <h2>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <br>Made by- Chinmayee</h2>
+
+    <img class="randomMeal1" src="${meals.strMealThumb}">
+    <h1>${meals.strMeal}<br>Category: ${meals.strArea}</h1>
+    <button id="download">Download</button>`
+
+    middlContent.innerHTML = randomDish;
+}
+
+getRandomMeal();
 
 
-// // // function displayMovies(array){
-// // //     let movies = ""
-// // //     array.forEach((card)=>{
-// // //         movies +=`<div id="moviesContainer">
-// // //                 <div id="searchedMovies">
-// // //                     <img src="${card.Poster}" alt="">
-// // //                         <h2>${card.Title}</h2>
-// // //                         <h3>${card.Type}</h3>
-// // //                         <h3>${card.Year}</h3>
-// // //                 </div>    
-// // //             </div>`
+// function searched meal
+let searchBar = document.getElementById('search')
 
-// // //     })
-// // //     document.getElementById("container").innerHTML = movies;
-// // //   }
+async function getSearchedDishes() {
+    let meals = searchBar.value
+    try {
+      let data = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${meals}`);
+      let resp = await data.json();
 
-// // async function getMovies(){
-// //     // searchBar = searchBar.value
-// //     try{
-// //         let response = await fetch(`https://www.themealdb.com/api/json/v1/1/random.php`) //
-// //         console.log(response);
+      if(resp.meals){
+        searchedDishes(resp.meals);
+      }
 
-// //         // let data = await response.json();
-// //         // displayMovies(data.Search)
-
-// //     }
-// //     catch(error){
-// //         console.log(error)
-// //     }
-// // };
-
-// // getMovies()
-// // // searchBar.addEventListener("keypress", function(e){
-// // //     if(e.key == "Enter"){
-// // //         getMovies()
-// // //         // console.log(data)
-// // //         // displayMovies(data)
-// // //     }
-// // // })
-
-
-// // function data(array){
-// //     let card = ""
-// //     array.forEach((news)=>{
-// //       card+=` <div class="article">
-// //       <h1>${news.title}</h1>
-// //       <img src="${news.image}">
-// //       <p>${news.content}</p>
-// //     </div>`
-// //     })
-// //     document.body.innerHTML = card
-// //   }
-
-// async function getNewsData() {
-//     try {
-//       const response = await axios.get("https://www.themealdb.com/api/json/v1/1/random.php");
-//       // const news = document.createElement('div');
+    } catch (error) {
+      console.error(error);
+    }
+  }
   
-//       console.log(response.data);
-//     //   data(response.data.articles);
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   }
-  
-// //   getNewsData();
+//  searched dishes category function 
+function searchedDishes(array){
+    let searchedMeal = ""
+    array.forEach((meals)=>{
+        searchedMeal+=`<div class="dishes">
+        <img class="dishImage" src="${meals.strMealThumb}" alt="">
+        <h3>${meals.strMeal}</h3>
+        </div>`
+    })
+    document.getElementById('searchedCategory').innerHTML = searchedMeal;
+}
+
+
+searchBar.addEventListener("keypress", function(e){
+    if(e.key == "Enter"){
+        getSearchedDishes();
+    }
+})
