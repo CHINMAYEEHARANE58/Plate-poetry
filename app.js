@@ -1,9 +1,11 @@
+let data;
+
 // random meal function            
 async function getRandomMeal() {
     try {
         let response = await fetch(`https://www.themealdb.com/api/json/v1/1/random.php`);
-        let data = await response.json();
-        
+        data = await response.json();
+        console.log(data.meals)
         displaymeal(data.meals[0]);
     } catch (error) {
         console.error(error);
@@ -15,16 +17,17 @@ function displaymeal(meals){
     let middlContent = document.getElementById('middlContent')
 
     let randomDish = `<img class="randomMeal" src="${meals.strMealThumb}">
-    <h2>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <br>Made by- Chinmayee</h2>
-
-    <img class="randomMeal1" src="${meals.strMealThumb}">
-    <h1>${meals.strMeal}<br>Category: ${meals.strArea}</h1>
-    <button id="download">Download</button>`
+    <h1>${meals.strMeal}<br>Category: ${meals.strCategory}<br> Region: ${meals.strArea}</h1>
+    <button id="ingredients">Ingredients</button>
+    <button id="recipe">Recipe</button>`
 
     middlContent.innerHTML = randomDish;
 }
 
 getRandomMeal();
+
+
+
 
 
 // function searched meal
@@ -63,3 +66,4 @@ searchBar.addEventListener("keypress", function(e){
         getSearchedDishes();
     }
 })
+
