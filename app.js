@@ -1,9 +1,10 @@
 let data;
 
-// random meal function            
+// Random meal function            
 async function getRandomMeal() {
     try {
-        let response = await fetch(`https://www.themealdb.com/api/json/v1/1/random.php`);
+        // Fetching random meal api
+        var response = await fetch(`https://www.themealdb.com/api/json/v1/1/random.php`);
         data = await response.json();
         console.log(data.meals)
         displaymeal(data.meals[0]);
@@ -12,30 +13,22 @@ async function getRandomMeal() {
     }
 }
 
-// displaying the random meal in html
+// Displaying the random meal in html
 function displaymeal(meals){
-    let middlContent = document.getElementById('middlContent')
-
-    let randomDish = `<img class="randomMeal" src="${meals.strMealThumb}">
-    <h1>${meals.strMeal}<br>Category: ${meals.strCategory}<br> Region: ${meals.strArea}</h1>
-    <button id="ingredients">Ingredients</button>
-    <button id="recipe">Recipe</button>`
-
-    middlContent.innerHTML = randomDish;
+    // console.log(meals)
+    document.querySelector(".randomMeal").src = meals.strMealThumb
+    document.querySelector("#randomHeading").innerHTML = `${meals.strMeal}<br>Category: ${meals.strCategory}<br> Region: ${meals.strArea}`;
 }
 
 getRandomMeal();
 
-
-
-
-
-// function searched meal
+// Function searched meal
 let searchBar = document.getElementById('search')
 
 async function getSearchedDishes() {
     let meals = searchBar.value
     try {
+    // Fetching searched meal api
       let data = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${meals}`);
       let resp = await data.json();
 
@@ -48,7 +41,7 @@ async function getSearchedDishes() {
     }
   }
   
-//  searched dishes category function 
+//  Function to display searched dishes
 function searchedDishes(array){
     let searchedMeal = ""
     array.forEach((meals)=>{
@@ -60,10 +53,53 @@ function searchedDishes(array){
     document.getElementById('searchedCategory').innerHTML = searchedMeal;
 }
 
-
+// Event listener to display the dishes when category is entered
 searchBar.addEventListener("keypress", function(e){
     if(e.key == "Enter"){
         getSearchedDishes();
     }
 })
 
+
+document.getElementById("ingredients").addEventListener("click" , ()=>{
+    getIngredients(data.meals[0].idMeal);
+})
+
+
+// Function to fetch and display ingredients
+async function getIngredients(mealId) {
+    try {
+        let response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`);
+        let detailedData = await response.json();
+
+        displayIngredients(detailedData.meals);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// Function to display ingredients in the modal
+function displayIngredients(meals) {
+    const meal = meals[0];
+
+    let ingredientsList = "<h6>Ingredients:</h6><ul id='list'>";
+
+    for (let i = 1; i <= 20; i++) {
+        const ingredient = meal[`strIngredient${i}`];
+        const measure = meal[`strMeasure${i}`];
+
+        if (ingredient && measure) {
+            ingredientsList += `<li>${measure} ${ingredient}</li>`;
+        }
+    }
+
+    ingredientsList += "</ul>";
+
+    document.getElementById('modal-content').innerHTML = ingredientsList;
+
+    document.getElementById('modal').style.display = 'block';
+}
+
+document.querySelector("#closeBtn").addEventListener("click" , ()=>{
+    document.getElementById("modal").style.display = "none"
+})

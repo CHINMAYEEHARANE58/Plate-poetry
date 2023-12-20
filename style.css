@@ -9,48 +9,76 @@ body{
     height: 100vh;
 }
 
-/* main page */
+/* Main page */
 #mainPage{
     background-image: url("./assets/Group\ 14.png");
     width: 100%;
     height: 100vh;
 }
 
+/* Modal */
+#modal{
+    position: absolute;
+    top:0;
+    left: 19vh;
+    width: 120vh;
+    height: 75vh;
+    color: white;
+    background-image: url('./assets/ingredients\ bg.png');   
+    display: none;
+    overflow: auto;
+}
+
+#closeBtn{
+    cursor: pointer;
+    margin: 1.5vh 2vh 0vh;
+}
+
+h6{
+    text-align: center;
+    color: white;
+    font-size: 25px; 
+}
+
+#list{
+    padding-left: 45vh;
+}
+
+
 h4{
     color: white;
     width: 65vh;
-    border: 1px solid white;
     font-size: 32px;
     position: absolute;
     top: 15vh;
-    left: 34vh;
+    left: 38vh;
 }
 
 p{
     color: white;
     width: 76vh;
-    border: 1px solid white;
     font-size: 21px;
     position: absolute;
     top: 31vh;
-    left: 34vh; 
+    left: 38vh; 
 }
 
+/* Main page image */
 #mainPageImg{
     width: 58vh;
     height: 69vh;
-    margin-left: 129vh ;
+    margin-left: 135vh ;
     margin-top: 22vh;
     box-shadow: 2px 2px 3px black;
     border-radius: 3px;
 }
 
-
+/* Explore more button */
 #exploreButton{
     width: 27vh;
     height: 8vh;
-    left: 34vh;
-    top: 80vh;
+    left: 38vh;
+    top: 81vh;
     font-family: 'Kalam', cursive;
     position: absolute;
     font-size: 24px;
@@ -66,21 +94,21 @@ p{
     scale: 1.1;
 }
 
+/* Logo */
 #logo{
     position: absolute;
     left: 1vh;
     top: -5vh;
     width: 30vh;
     height: 30vh;
-    border: 1px solid white;
 }
 
+/* search box */
 #search{
-    
     width: 50vh;
     height: 5vh;
     position: absolute;
-    left: 82vh;
+    left: 89vh;
     top: 6vh;
     border-radius: 3px;
     border: 0px;
@@ -91,26 +119,27 @@ p{
     background-color: white;
 }
 
+/* Dishes section */
 #dishes-section{
     width: 100%;
     height: 160vh; 
 }
 
 h2{
-    border: 1px solid white;
-    color: #d9dddf;
+    color: white;
     font-size: 35px;
     text-align: center;
 }
 
+/* random meal */
 #middlContent{
     width: 160vh;
     height: 60vh;
     position: absolute;
-    left: 27vh;
+    left: 32vh;
     top: 120vh;
     border-radius: 5px;
-    background-color: #ffffff;
+    background-color: white;
     box-shadow: 2px 2px 5px black;
 }
 
@@ -126,38 +155,17 @@ h1{
     height: 20vh;
     left: 71vh;
     bottom: 30vh;
-    line-height: 6vh;
-    font-size: 40px;
+    line-height: 8vh;
+    font-size: 36px;
     color: rgb(0, 0, 0);
-    border: 1px solid rgb(207, 35, 35);
 }
 
-
-#recipe{
-    width: 20vh;
-    height: 6vh;
-    top: 47vh;
-    left: 71vh;
-    position: absolute;
-    font-size: 24px;
-    background-color: #102331;
-    color: white;
-    border: 0px;
-    box-shadow: 1px 1px 7px rgb(32, 32, 32);
-    border-radius: 10px;
-    font-family: 'Kalam', cursive;
-    transition: 0.5s ease;
-}
-
-#recipe:hover{
-    scale: 1.1;
-}
-
+/* Ingredients button */
 #ingredients{
-    width: 20vh;
+    width: 23vh;
     height: 6vh;
     top: 47vh;
-    left: 100vh;
+    left: 73vh;
     position: absolute;
     font-size: 24px;
     background-color: #102331;
@@ -174,28 +182,27 @@ h1{
 }
 
 h5{
-    border: 1px solid white;
-    color: #d9dddf;
+    color: white;
     font-size: 35px;
-    margin-top: 77vh;
+    margin-top: 97vh;
     text-align: center;
 }
 
+/* Searched category */
 #searchedCategory{
-    border: 1px solid rgb(207, 35, 35);
     width: 100%;
     height: 70vh;
     position: absolute;
-    top:190vh;
+    top:220vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
+/* Dishes */
 .dishes{
-    border: 1px solid white;
     background-image: url("./assets/dishes\ background.jpeg");
-    width: 45vh;
+    width: 47vh;
     height: 37vh;
     margin-top: 20vh;
     border-radius: 5px;
@@ -225,171 +232,149 @@ h3{
 /* responsiveness */
 @media only screen and  (max-width: 900px){
 
+    /* Main page */
     h4{
-        width: 23vh;
-        font-size: 20px;
-        top: 30vh;
-        left: 11vh;
+        width: 79vh;
+        font-size: 70px;
+        top: 90vh;
+        left: 32vh;
     }
 
     p{
-        width: 25vh;
-        font-size: 16px;
-        top: 39vh;
-        left: 10.3vh;
+        width: 82vh;
+        font-size: 50px;
+        top: 120vh;
+        left: 30.5vh;
         text-align: center; 
     }
 
+    #mainPage{
+        width: 0vh;
+        height: 0vh;
+    }
+
     #mainPageImg{
-        width: 36vh;
-        height: 40vh;
-        margin-left: 5vh ;
-        margin-top: 28vh;
+        width: 120vh;
+        height: 160vh;
+        margin-left: 12vh ;
+        margin-top: 86vh;
     }
 
 
     #exploreButton{
-        width: 17vh;
-        height: 6vh;
-        left: 14.5vh;
-        top: 72vh;
-        font-size: 24px;
+        width: 40vh;
+        height: 13vh;
+        left: 48vh;
+        top: 220vh;
+        font-size: 40px;
     }
 
+    /* Logo */
     #logo{
         top: 1vh;
-        width: 10vh;
-        height: 10vh;
+        width: 40vh;
+        height: 40vh;
     }
 
+    /* Search */
     #search{
-        width: 27vh;
-        height: 3.5vh;
-        left: 10vh;
-        top: 16vh;
+        width: 87vh;
+        height: 10vh;
+        left: 27vh;
+        top: 52vh;
+        font-size: 50px;
     }
 
     h2{
-        border: 1px solid white;
-        color: #d9dddf;
-        font-size: 35px;
+        color: white;
+        font-size: 85px;
+        width: 142vh;
+        height: 15vh;
+        margin-top: 270vh;
         text-align: center;
     }
 
+    /* Random meal */
     #middlContent{
-        width: 160vh;
+        width: 110vh;
         height: 60vh;
-        position: absolute;
-        left: 27vh;
-        top: 120vh;
-        border-radius: 5px;
-        background-color: #ffffff;
-        box-shadow: 2px 2px 5px black;
+        left: 16vh;
+        top: 310vh;
     }
 
     .randomMeal{
-        width: 64vh;
-        height: 60vh;
-        border-radius: 5px 0px 0px 5px;
+        width: 50vh;
+        height: 50vh;
+        margin: 5vh;
     }
 
     h1{
-        position: absolute;
-        width: 70vh;
+        width: 40vh;
         height: 20vh;
-        left: 71vh;
-        bottom: 30vh;
-        line-height: 6vh;
-        font-size: 40px;
-        color: rgb(0, 0, 0);
-        border: 1px solid rgb(207, 35, 35);
+        left: 62vh;
+        bottom: 31vh;
+        font-size: 35px;
     }
 
-
-    #recipe{
-        width: 20vh;
-        height: 6vh;
-        top: 47vh;
-        left: 71vh;
-        position: absolute;
-        font-size: 24px;
-        background-color: #102331;
-        color: white;
-        border: 0px;
-        box-shadow: 1px 1px 7px rgb(32, 32, 32);
-        border-radius: 10px;
-        font-family: 'Kalam', cursive;
-        transition: 0.5s ease;
-    }
-
-    #recipe:hover{
-        scale: 1.1;
-    }
-
+    
     #ingredients{
-        width: 20vh;
-        height: 6vh;
-        top: 47vh;
-        left: 100vh;
-        position: absolute;
-        font-size: 24px;
-        background-color: #102331;
-        color: white;
-        border: 0px;
-        box-shadow: 1px 1px 7px rgb(32, 32, 32);
-        border-radius: 10px;
-        font-family: 'Kalam', cursive;
-        transition: 0.5s ease;
+        width: 22vh;
+        height: 8vh;
+        top: 43vh;
+        left: 63vh;
+        font-size: 26px;
     }
 
-    #ingredients:hover{
-        scale: 1.1;
+    /* Modal */
+    #modal{
+        left: 7vh;
+        width: 95vh;
+        height: 60vh;
+    }
+    
+    #closeBtn{
+        width: 5vh;
+    }
+    
+    h6{
+        font-size: 35px;
+        margin-top: 0px; 
+    }
+    
+    #list{
+        padding-left: 37vh;
+        font-size: 29px;
     }
 
     h5{
-        border: 1px solid white;
-        color: #d9dddf;
-        font-size: 35px;
         margin-top: 77vh;
-        text-align: center;
+        font-size: 85px;
+        width: 142vh;
+        height: 15vh;
+        margin-top: 110vh;
     }
 
+    /* Searched Category */
     #searchedCategory{
-        border: 1px solid rgb(207, 35, 35);
-        width: 100%;
-        height: 70vh;
-        position: absolute;
-        top:190vh;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
+        width: 141vh;
+        height: 100vh;
+        top: 410vh;
     }
 
     .dishes{
-        border: 1px solid white;
-        background-image: url("./assets/dishes\ background.jpeg");
-        width: 45vh;
-        height: 37vh;
-        margin-top: 20vh;
-        border-radius: 5px;
-        transition: 0.5s ease;
-    }
-
-    .dishes:hover{
-        scale: 1.1;
+        width: 55vh;
+        height: 42vh;
     }
 
     .dishImage{
-        width: 38vh;
-        height: 30vh;
-        margin: -4vh 3.5vh ;
-        border-radius: 5px;
+        width: 47vh;
+        height: 37vh;
+        margin: -5vh 4vh ;
     }
 
     h3{
-        text-align: center;
-        padding-top: 2.5vh;
-        color: white;
+        padding-top: 1vh;
+        font-size: 40px;
     }
 
 }
